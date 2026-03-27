@@ -60,7 +60,7 @@
             </div>
             <a href="#contact" 
                class="bg-sky-500 hover:bg-sky-600 px-6 py-3 rounded-2xl font-medium transition">
-                Get Started Free
+                Contact Us
             </a>
         </div>
     </nav>
@@ -69,25 +69,20 @@
     <section class="hero-bg min-h-screen flex items-center pt-20">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full text-sm border border-white/20">
-                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                    Olympic • World Champs • NCAA Data
-                </div>
-
                 <h1 class="text-5xl lg:text-7xl font-black leading-tight tracking-tighter">
                     Train Smarter.<br>
                     <span class="text-sky-400">Race Faster.</span>
                 </h1>
 
                 <p class="text-xl text-gray-300 max-w-lg">
-                    SwimMetrics brings elite split analysis, accurate time conversions, 
+                    <b>SwimMetrics</b> brings elite split analysis, accurate time conversions, 
                     and performance projections into one powerful app — built from real race data.
                 </p>
 
                 <div class="flex flex-wrap gap-4">
-                    <a href="#contact" 
+                    <a href="#about" 
                        class="bg-sky-500 hover:bg-sky-600 transition px-8 py-4 rounded-2xl font-semibold text-lg flex items-center gap-3">
-                        Start Free Trial
+                        About Us
                         <i class="fas fa-arrow-right"></i>
                     </a>
                     <a href="#gallery" 
@@ -116,36 +111,66 @@
             <div>Olympic Games</div>
             <div>World Championships</div>
             <div>NCAA Championships</div>
-            <div>International Swimming League</div>
+        </div>
+    </div>
+<!-- Features Section -->
+<section id="features" class="py-24 bg-[#0a1321]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Powerful tools for serious swimmers</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- Split Calculator -->
+            <div onclick="showModal('split-calculator')" 
+                 class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
+                <div class="text-6xl mb-6">📊</div>
+                <h3 class="text-2xl font-bold mb-4">Split Calculator</h3>
+                <p class="text-gray-400 mb-6">Get precise splits with elite pacing models.</p>
+            </div>
+
+            <!-- Course Converter -->
+            <div onclick="showModal('course-converter')" 
+                 class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
+                <div class="text-6xl mb-6">🔄</div>
+                <h3 class="text-2xl font-bold mb-4">Course Converter</h3>
+                <p class="text-gray-400 mb-6">Accurate conversion times between SCY, SCM, and LCM with splits.</p>
+            </div>
+
+            <!-- Stopwatch -->
+            <div onclick="showModal('stopwatch')" 
+                 class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
+                <div class="text-6xl mb-6">📈</div>
+                <h3 class="text-2xl font-bold mb-4">Stopwatch</h3>
+                <p class="text-gray-400 mb-6">View splits and predict race outcome with our final time predictor in real time.</p>
+            </div>
         </div>
     </div>
 
-    <!-- Features -->
-    <section id="features" class="py-24 bg-[#0a1321]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Powerful Tools for Serious Swimmers</h2>
+    <!-- Modal -->
+    <div id="tool-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-6">
+        <div class="bg-[#0f172a] border border-white/20 rounded-3xl max-w-3xl w-full overflow-hidden">
+            <div class="flex justify-between items-center p-6 border-b border-white/10">
+                <h3 id="modal-title" class="text-2xl font-bold"></h3>
+                <button onclick="closeModal()" 
+                        class="text-gray-400 hover:text-white text-3xl leading-none">×</button>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group">
-                    <div class="text-6xl mb-6">📊</div>
-                    <h3 class="text-2xl font-bold mb-4">Split Predictor</h3>
-                    <p class="text-gray-400">Get precise 15m, 25m, 35m and 50m splits with elite pacing models.</p>
-                </div>
-                <div class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group">
-                    <div class="text-6xl mb-6">🔄</div>
-                    <h3 class="text-2xl font-bold mb-4">Course Converter</h3>
-                    <p class="text-gray-400">Convert times between SCY, SCM, and LCM with high accuracy.</p>
-                </div>
-                <div class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group">
-                    <div class="text-6xl mb-6">📈</div>
-                    <h3 class="text-2xl font-bold mb-4">Stopwatch</h3>
-                    <p class="text-gray-400">Track your splits and analyze your performance in real-time.</p>
-                </div>
+            <div class="p-8 text-center">
+                <img id="modal-image" 
+                     src="" 
+                     alt="Tool Preview" 
+                     class="mx-auto w-auto max-h-[600px] rounded-2xl shadow-2xl">
+            </div>
+            <div class="p-6 border-t border-white/10 text-center">
+                <button onclick="closeModal()" 
+                        class="px-8 py-3 bg-white/10 hover:bg-white/20 rounded-2xl transition">
+                    Close
+                </button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Gallery Section (New & Enhanced) -->
     <section id="gallery" class="py-24 bg-[#0f172a]">
@@ -157,17 +182,6 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- App Image 1 -->
-                <!-- <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/2.png" 
-                         alt="Split Predictor" 
-                         class="w-full h-auto">
-                    <div class="p-6">
-                        <h4 class="font-semibold text-lg mb-1">Split Predictor</h4>
-                        <p class="text-gray-400 text-sm">Enter your goal time and instantly see accurate pacing splits.</p>
-                    </div>
-                </div> -->
-
-                <!-- App Image 2 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
                     <img src="images/1.png" 
                          alt="Course Converter" 
@@ -178,29 +192,7 @@
                     </div>
                 </div>
 
-                <!-- App Image 3 -->
-                <!-- <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/3.png" 
-                         alt="Performance Analysis" 
-                         class="w-full h-auto">
-                    <div class="p-6">
-                        <h4 class="font-semibold text-lg mb-1">Performance Analysis</h4>
-                        <p class="text-gray-400 text-sm">Deep race breakdowns and actionable insights.</p>
-                    </div>
-                </div> -->
-
-                <!-- App Image 4 -->
-                <!-- <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/4.png" 
-                         alt="Live Dashboard" 
-                         class="w-full h-auto">
-                    <div class="p-6">
-                        <h4 class="font-semibold text-lg mb-1">Converter</h4>
-                        <p class="text-gray-400 text-sm">Instantly convert times between SCY, SCM, and LCM.</p>
-                    </div>
-                </div> -->
-
-                <!-- App Image 5 -->
+                <!-- App Image 2 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
                     <img src="images/5.png" 
                          alt="50m LCM Analysis" 
@@ -211,7 +203,7 @@
                     </div>
                 </div>
 
-                <!-- App Image 6 -->
+                <!-- App Image 3 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
                     <img src="images/6.png" 
                          alt="Mobile Experience" 
@@ -243,16 +235,15 @@
                     
                     <div class="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed">
                         <p>
-                            SwimMetrics was founded by <span class="text-sky-400 font-semibold">Patric</span> with one clear mission: 
-                            to give swimmers and coaches access to the same high-quality data and analysis tools used at the elite level.
+                            <b>SwimMetrics</b> was founded with one clear mission: to give coaches and swimmers access to the same high-quality data and analytic tools used at the elite levels.
                         </p>
+                        <br />
                         <p>
-                            Frustrated by inaccurate split predictions and unreliable course conversions, Patric set out to build 
-                            a platform that uses real race data from the Olympics, World Championships, and NCAA Championships.
+                            <b>SwimMetrics</b> has built a platform that uses real race data from the Olympics, World Championships, and NCAA Championships.
                         </p>
+                        <br />
                         <p>
-                            Today, SwimMetrics helps hundreds of athletes and coaches train smarter, race faster, and make better 
-                            data-driven decisions — every single day.
+                            <b>SwimMetrics</b> provides data driven tools to coaches and athletes to train smarter and race faster.
                         </p>
                     </div>
                     
@@ -267,9 +258,9 @@
 
                 <!-- Right: Values / Mission -->
                 <div class="glass border border-white/10 rounded-3xl p-10">
-                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                    <h3 class="text-2xl font-bold mb-8 flex text-center gap-3">
                         <span class="text-sky-400">→</span> 
-                        What Drives Us
+                        Real Data for Real Training
                     </h3>
                     
                     <div class="space-y-8">
@@ -293,7 +284,7 @@
                             <div class="text-4xl">🤝</div>
                             <div>
                                 <h4 class="font-semibold text-xl mb-2">For Swimmers &amp; Coaches</h4>
-                                <p class="text-gray-400">Whether you're chasing a personal best or guiding a team, SwimMetrics is built to help you succeed.</p>
+                                <p class="text-gray-400">Whether you're chasing a personal best or guiding a team, <b>SwimMetrics</b> is built to help you succeed.</p>
                             </div>
                         </div>
                     </div>
@@ -333,8 +324,43 @@
     </section>
 
     <footer class="py-12 border-t border-white/10 text-center text-gray-500 text-sm">
-        © 2026 SwimMetrics • Built for swimmers who want real results.
+        © 2026 <b>SwimMetrics</b> • Built for coaches and swimmers who want real results.
     </footer>
+
+    <script>
+        function showModal(tool) {
+            const modal = document.getElementById('tool-modal');
+            const title = document.getElementById('modal-title');
+            const image = document.getElementById('modal-image');
+
+            if (tool === 'split-calculator') {
+                title.textContent = 'Split Calculator';
+                image.src = 'images/splitcalc.jpg';
+            } 
+            else if (tool === 'course-converter') {
+                title.textContent = 'Course Converter';
+                image.src = 'images/crsconverter.jpg';
+            } 
+            else if (tool === 'stopwatch') {
+                title.textContent = 'Stopwatch';
+                image.src = 'images/stopwatch.jpg';
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('tool-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('tool-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
 
 </body>
 </html>
