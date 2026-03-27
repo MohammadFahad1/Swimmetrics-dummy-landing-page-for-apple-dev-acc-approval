@@ -56,6 +56,7 @@
                 <a href="index.html" class="hover:text-sky-400 transition">Home</a>
                 <a href="#features" class="hover:text-sky-400 transition">Features</a>
                 <a href="#gallery" class="hover:text-sky-400 transition">App Gallery</a>
+                <a href="#faq" class="hover:text-sky-400 transition">FAQ</a>
                 <a href="#about" class="hover:text-sky-400 transition">About</a>
             </div>
             <a href="#contact" 
@@ -307,6 +308,86 @@
     <!-- Data & Testimonials remain the same as previous version -->
     <!-- (I kept them to maintain length and flow) -->
 
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-[#0f172a]">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-400 text-lg">Everything you need to know about SwimMetrics</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" 
+                            class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        What data does SwimMetrics use?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        SwimMetrics uses real race data from the Olympics, World Championships, NCAA Championships, and the International Swimming League to power accurate split predictions and conversions.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" 
+                            class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        Is SwimMetrics free to use?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        Yes, SwimMetrics offers a free tier with core features. Premium plans unlock advanced analysis, unlimited conversions, and priority support.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" 
+                            class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        Can I convert times between SCY, SCM, and LCM?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        Absolutely. Our Course Converter uses real performance-based multipliers for highly accurate conversions between Short Course Yards, Short Course Meters, and Long Course Meters.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" 
+                            class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        How accurate are the split predictions?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        Our predictions are built from elite-level data and have been validated against real race results. Many coaches and athletes report significant improvements in pacing after using SwimMetrics.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" 
+                            class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        Who is behind SwimMetrics?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        SwimMetrics was founded by Patric with the goal of bringing professional-level swim analysis tools to all swimmers and coaches.
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-400">Still have questions?</p>
+                <a href="mailto:contact@swimmetricsapp.com" 
+                class="inline-block mt-4 text-sky-400 hover:text-sky-300 font-medium">
+                    Contact Patric at contact@swimmetricsapp.com
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Final CTA -->
     <section id="contact" class="py-28 bg-gradient-to-br from-sky-900 to-blue-950">
         <div class="max-w-4xl mx-auto text-center px-6">
@@ -360,6 +441,19 @@
         document.getElementById('tool-modal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
+        
+    function toggleFAQ(button) {
+        const answer = button.nextElementSibling;
+        const chevron = button.querySelector('.faq-chevron');
+        
+        if (answer.classList.contains('hidden')) {
+            answer.classList.remove('hidden');
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            answer.classList.add('hidden');
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
     </script>
 
 </body>
