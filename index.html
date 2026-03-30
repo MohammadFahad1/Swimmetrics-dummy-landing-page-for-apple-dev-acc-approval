@@ -40,6 +40,9 @@
             transform: translateY(-12px) scale(1.03);
             box-shadow: 0 25px 50px -12px rgb(14 165 233 / 0.25);
         }
+        .hero-height {
+            min-height: calc(100vh-100px)
+        }
     </style>
 </head>
 <body class="bg-[#0f172a] text-white font-sans">
@@ -67,7 +70,7 @@
     </nav>
 
     <!-- Hero -->
-    <section class="hero-bg min-h-screen flex items-center pt-20">
+    <section class="hero-bg flex items-center pt-20 min-h-[94vh]">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
                 <h1 class="text-5xl lg:text-7xl font-black leading-tight tracking-tighter">
@@ -94,7 +97,7 @@
             </div>
 
             <div class="relative flex justify-center">
-                <div class="relative w-full max-w-md float">
+                <div class="relative w-full max-w-md">
                     <div class="absolute -inset-12 bg-gradient-to-br from-sky-400 to-blue-600 rounded-[4rem] blur-3xl opacity-30"></div>
                     <div class="glass border border-white/20 rounded-3xl p-4 shadow-2xl">
                         <img src="images/stopwatch.gif" 
@@ -107,71 +110,71 @@
     </section>
 
     <!-- Trust Bar -->
-    <div class="py-8 border-b border-white/10 bg-[#0a1321]">
+    <div class="py-3 border-b border-white/10 bg-[#0a1321]">
         <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center items-center gap-x-12 gap-y-6 text-lg opacity-80">
             <div>Olympic Games</div>
             <div>World Championships</div>
             <div>NCAA Championships</div>
         </div>
     </div>
-<!-- Features Section -->
-<section id="features" class="py-24 bg-[#0a1321]">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Powerful tools for serious swimmers</h2>
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-[#0a1321]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Powerful tools for competitive swimmers</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Split Calculator -->
+                <div onclick="showModal('split-calculator')" 
+                    class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
+                    <div class="text-6xl mb-6">📊</div>
+                    <h3 class="text-2xl font-bold mb-4">Split Calculator</h3>
+                    <p class="text-gray-400 mb-6">Get precise splits with elite pacing models.</p>
+                </div>
+
+                <!-- Course Converter -->
+                <div onclick="showModal('course-converter')" 
+                    class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
+                    <div class="text-6xl mb-6">🔄</div>
+                    <h3 class="text-2xl font-bold mb-4">Course Converter</h3>
+                    <p class="text-gray-400 mb-6">Accurate conversion times between SCY, SCM, and LCM with splits.</p>
+                </div>
+
+                <!-- Stopwatch -->
+                <div onclick="showModal('stopwatch')" 
+                    class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
+                    <div class="text-6xl mb-6">📈</div>
+                    <h3 class="text-2xl font-bold mb-4">Stopwatch</h3>
+                    <p class="text-gray-400 mb-6">View splits and predict race outcome with our final time predictor in real time.</p>
+                </div>
+            </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            
-            <!-- Split Calculator -->
-            <div onclick="showModal('split-calculator')" 
-                 class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
-                <div class="text-6xl mb-6">📊</div>
-                <h3 class="text-2xl font-bold mb-4">Split Calculator</h3>
-                <p class="text-gray-400 mb-6">Get precise splits with elite pacing models.</p>
-            </div>
-
-            <!-- Course Converter -->
-            <div onclick="showModal('course-converter')" 
-                 class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
-                <div class="text-6xl mb-6">🔄</div>
-                <h3 class="text-2xl font-bold mb-4">Course Converter</h3>
-                <p class="text-gray-400 mb-6">Accurate conversion times between SCY, SCM, and LCM with splits.</p>
-            </div>
-
-            <!-- Stopwatch -->
-            <div onclick="showModal('stopwatch')" 
-                 class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all group cursor-pointer">
-                <div class="text-6xl mb-6">📈</div>
-                <h3 class="text-2xl font-bold mb-4">Stopwatch</h3>
-                <p class="text-gray-400 mb-6">View splits and predict race outcome with our final time predictor in real time.</p>
+        <!-- Modal -->
+        <div id="tool-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-6">
+            <div class="bg-[#0f172a] border border-white/20 rounded-3xl max-w-3xl w-full overflow-hidden">
+                <div class="flex justify-between items-center p-6 border-b border-white/10">
+                    <h3 id="modal-title" class="text-2xl font-bold"></h3>
+                    <button onclick="closeModal()" 
+                            class="text-gray-400 hover:text-white text-3xl leading-none">×</button>
+                </div>
+                <div class="p-8 text-center">
+                    <img id="modal-image" 
+                        src="" 
+                        alt="Tool Preview" 
+                        class="mx-auto w-auto max-h-[600px] rounded-2xl shadow-2xl">
+                </div>
+                <div class="p-6 border-t border-white/10 text-center">
+                    <button onclick="closeModal()" 
+                            class="px-8 py-3 bg-white/10 hover:bg-white/20 rounded-2xl transition">
+                        Close
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="tool-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-6">
-        <div class="bg-[#0f172a] border border-white/20 rounded-3xl max-w-3xl w-full overflow-hidden">
-            <div class="flex justify-between items-center p-6 border-b border-white/10">
-                <h3 id="modal-title" class="text-2xl font-bold"></h3>
-                <button onclick="closeModal()" 
-                        class="text-gray-400 hover:text-white text-3xl leading-none">×</button>
-            </div>
-            <div class="p-8 text-center">
-                <img id="modal-image" 
-                     src="" 
-                     alt="Tool Preview" 
-                     class="mx-auto w-auto max-h-[600px] rounded-2xl shadow-2xl">
-            </div>
-            <div class="p-6 border-t border-white/10 text-center">
-                <button onclick="closeModal()" 
-                        class="px-8 py-3 bg-white/10 hover:bg-white/20 rounded-2xl transition">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Gallery Section (New & Enhanced) -->
     <section id="gallery" class="py-24 bg-[#0f172a]">
@@ -184,7 +187,18 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- App Image 1 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/splitcalculator.gif" 
+                    <img src="images/stopwatch_predictor.gif" 
+                         alt="Split Calculator" 
+                         class="w-full h-auto">
+                    <div class="p-6">
+                        <h4 class="font-semibold text-lg mb-1">Stopwatch Predictor</h4>
+                        <p class="text-gray-400 text-sm">Instantly predict finishing times as the swim progresses.</p>
+                    </div>
+                </div>
+
+                <!-- App Image 2 -->
+                <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
+                    <img src="images/splitcalculator1.gif" 
                          alt="Split Calculator" 
                          class="w-full h-auto">
                     <div class="p-6">
@@ -193,7 +207,7 @@
                     </div>
                 </div>
 
-                <!-- App Image 2 -->
+                <!-- App Image 3 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
                     <img src="images/converter.gif" 
                          alt="Course Converter" 
@@ -204,7 +218,9 @@
                     </div>
                 </div>
 
-                <!-- App Image 3 -->
+                <div></div>
+                
+                <!-- App Image 5 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
                     <img src="images/stopwatch.gif" 
                          alt="Course Converter" 
@@ -215,27 +231,85 @@
                     </div>
                 </div>
 
-                <!-- App Image 2 -->
-                <!-- <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/5.png" 
-                         alt="50m LCM Analysis" 
-                         class="w-full h-auto">
-                    <div class="p-6">
-                        <h4 class="font-semibold text-lg mb-1">App Sidebar</h4>
-                        <p class="text-gray-400 text-sm">Quick access to tools and resources.</p>
-                    </div>
-                </div> -->
+                <div></div>
 
-                <!-- App Image 3 -->
-                <!-- <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/6.jpg" 
-                         alt="Mobile Experience" 
-                         class="w-full h-auto">
-                    <div class="p-6">
-                        <h4 class="font-semibold text-lg mb-1">Help & Support</h4>
-                        <p class="text-gray-400 text-sm">Ask for help or provide feedback.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It Is For? Section -->
+    <section id="who-it-is-for" class="py-24 bg-[#0a1321]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Who It Is For?</h2>
+                <p class="text-gray-400 text-lg">Built for the entire swim community</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Coaches -->
+                <div class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all">
+                    <div class="text-5xl mb-6">
+                        <img src="images/coach.png" class="h-16" alt="">
                     </div>
-                </div> -->
+                    <h3 class="text-2xl font-bold mb-6 text-sky-400">Coaches</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Simple performance-analysis companion to support training and goal setting
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Faster, clearer pacing and split planning for intentional practices
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Quick conversions and time math without slowing down deck time
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Swimmers -->
+                <div class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all">
+                    <div class="text-5xl mb-6">
+                        <img src="images/swimming.png" class="h-16" alt="">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-sky-400">Swimmers</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Get more confidence in your race plan and what “race pace” feels like
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Know your splits, paces, and conversions without guessing or poolside math
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Achieve best times with clear targets and smarter pacing awareness
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Parents -->
+                <div class="glass border border-white/10 rounded-3xl p-10 hover:border-sky-400/50 transition-all">
+                    <div class="text-5xl mb-6">👨‍👩‍👧</div>
+                    <h3 class="text-2xl font-bold mb-6 text-sky-400">Parents</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Understand times, cuts, pacing, and what the “next step” looks like
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Get quick clarity on required paces and how goals compare across courses
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-400 mt-1">•</span>
+                            Support your swimmer with calmer, more realistic meet preparation
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -301,7 +375,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-12 pt-8 border-t border-white/10">
+                    <!-- <div class="mt-12 pt-8 border-t border-white/10">
                         <p class="text-sky-400 font-medium flex items-center gap-2">
                             <span class="text-2xl">📧</span> 
                             Questions? Reach out to our support team:
@@ -310,7 +384,7 @@
                         class="text-lg font-medium hover:text-sky-300 transition">
                             contact@swimmetricsapp.com
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -389,13 +463,13 @@
                 </div>
             </div>
 
-            <div class="text-center mt-12">
+            <!-- <div class="text-center mt-12">
                 <p class="text-gray-400">Still have questions?</p>
                 <a href="mailto:contact@swimmetricsapp.com" 
                 class="inline-block mt-4 text-sky-400 hover:text-sky-300 font-medium">
                     Contact us at contact@swimmetricsapp.com
                 </a>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -411,12 +485,15 @@
                 <i class="fas fa-envelope"></i>
             </a>
             
-            <p class="mt-8 text-sm text-gray-400">• Email: contact@swimmetricsapp.com</p>
+            <!-- <p class="mt-8 text-sm text-gray-400">• Email: contact@swimmetricsapp.com</p> -->
         </div>
     </section>
 
     <footer class="py-12 border-t border-white/10 text-center text-gray-500 text-sm">
         © 2026 <b>SwimMetrics</b> • Built for coaches and swimmers who want real results.
+        <br/><br/>
+        <p>Many thanks to my family and friends.</p>
+        <p>Special thanks to my friends and mentors <strong>DCS, JCU, and ECR</strong>.</p>
     </footer>
 
     <script>
