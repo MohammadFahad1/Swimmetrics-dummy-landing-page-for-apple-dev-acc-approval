@@ -52,11 +52,11 @@
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="h-10 rounded-2xl flex items-center justify-center text-3xl">
-                    <a href="index.html"><image src="images/logo.png" alt="SwimMetrics Logo"/></a>
+                    <a href="index.html"><image src="images/logo1.png" class="h-12" alt="SwimMetrics Logo"/></a>
                 </div>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm">
-                <a href="index.html" class="hover:text-sky-400 transition">Home</a>
+                <a href="index.html#home" class="hover:text-sky-400 transition">Home</a>
                 <a href="#features" class="hover:text-sky-400 transition">Features</a>
                 <a href="#gallery" class="hover:text-sky-400 transition">App Gallery</a>
                 <a href="#faq" class="hover:text-sky-400 transition">FAQ</a>
@@ -70,7 +70,7 @@
     </nav>
 
     <!-- Hero -->
-    <section class="hero-bg flex items-center pt-20 min-h-[94vh]">
+    <section class="hero-bg flex items-center pt-20 min-h-[94vh]" id="home">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
                 <h1 class="text-5xl lg:text-7xl font-black leading-tight tracking-tighter">
@@ -100,7 +100,7 @@
                 <div class="relative w-full max-w-md">
                     <div class="absolute -inset-12 bg-gradient-to-br from-sky-400 to-blue-600 rounded-[4rem] blur-3xl opacity-30"></div>
                     <div class="glass border border-white/20 rounded-3xl p-4 shadow-2xl">
-                        <img src="images/stopwatch.gif" 
+                        <img src="images/stopwatch_converter.gif" 
                              alt="SwimMetrics App" 
                              class="rounded-2xl w-full max-h-[700px]">
                     </div>
@@ -112,9 +112,7 @@
     <!-- Trust Bar -->
     <div class="py-3 border-b border-white/10 bg-[#0a1321]">
         <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center items-center gap-x-12 gap-y-6 text-lg opacity-80">
-            <div>Olympic Games</div>
-            <div>World Championships</div>
-            <div>NCAA Championships</div>
+            Built with real data from the Olympic Games, World Championships, and NCAA Championships.
         </div>
     </div>
     <!-- Features Section -->
@@ -220,7 +218,7 @@
 
                 <!-- App Image 5 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/stopwatch.gif" 
+                    <img src="images/stopwatch_converter.gif" 
                          alt="Course Converter" 
                          class="w-full h-auto">
                     <div class="p-6">
@@ -229,6 +227,28 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Export Preview Section -->
+    <section class="py-20 bg-[#0a1321]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-3">Professional PDF Export</h2>
+                <p class="text-gray-400">Clean, printable results in PDF format</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="glass border border-white/10 rounded-3xl overflow-hidden shadow-2xl text-center">
+                    <img src="images/export_preview.png" 
+                        alt="SwimMetrics Export Preview - Multiple Events" 
+                        class="max-w-[400px] h-auto mx-auto">
+                </div>
+                
+                <p class="text-center text-sm text-gray-500 mt-6">
+                    Example of exported PDF with multiple events and clean formatting
+                </p>
             </div>
         </div>
     </section>
@@ -256,7 +276,7 @@
                         </li>
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
-                            Faster, clearer pacing and split planning for intentional practices
+                            Faster, clearer pacing and split planning-so practices and race plans are built with more intent.
                         </li>
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
@@ -274,7 +294,7 @@
                     <ul class="space-y-4 text-gray-300">
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
-                            Get more confidence in your race plan and what “race pace” feels like
+                            Get more confidence in your race plan-nowing what “race pace” feels like before you step up to the blocks.
                         </li>
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
@@ -294,15 +314,15 @@
                     <ul class="space-y-4 text-gray-300">
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
-                            Understand times, cuts, pacing, and what the “next step” looks like
+                            Understand what the times mean-cuts, pacing, and what “next step” looks like-without needing to be a swim expert.
                         </li>
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
-                            Get quick clarity on required paces and how goals compare across courses
+                            Get quick clarity during a season: what pace is needed and how events and goals compare across courses.
                         </li>
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
-                            Support your swimmer with calmer, more realistic meet preparation
+                            Support your goal oriented swimmer with a simpler, calmer meet prep-built around realistic expectations and actionable pace goals.
                         </li>
                     </ul>
                 </div>
@@ -312,65 +332,28 @@
 
     <!-- About Section -->
     <section id="about" class="py-24 bg-[#0f172a]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center">
                 
-                <!-- Left: Story -->
-                <div class="space-y-8">
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-12">
+                    What Drives SwimMetrics: <br />
+                    Real Data for Real Training
+                </h2>
+                
+                <div class="space-y-10 text-lg md:text-xl text-gray-300 leading-relaxed">
+                    <p>
+                        <b>SwimMetrics</b> was founded with one clear mission: to give coaches and swimmers access to the same high-quality data and analytic tools used at the elite levels.
+                    </p>
                     
-                    <h2 class="text-3xl md:text-4xl font-bold leading-tight">
-                        What Drives SwimMetrics: <br />
-                        Real Data for Real Training
-                    </h2>
+                    <p>
+                        <b>SwimMetrics</b> has built a platform that uses real race data from the Olympics, World Championships, and NCAA Championships.
+                    </p>
                     
-                    <div class="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed">
-                        <p>
-                            <b>SwimMetrics</b> was founded with one clear mission: to give coaches and swimmers access to the same high-quality data and analytic tools used at the elite levels.
-                        </p>
-                        <br />
-                        <p>
-                            <b>SwimMetrics</b> has built a platform that uses real race data from the Olympics, World Championships, and NCAA Championships.
-                        </p>
-                        <br />
-                        <p>
-                            <b>SwimMetrics</b> provides data driven tools to coaches and athletes to train smarter and race faster.
-                        </p>
-                    </div>
+                    <p>
+                        <b>SwimMetrics</b> provides data driven tools to coaches and athletes to train smarter and race faster.
+                    </p>
                 </div>
-
-                <!-- Right: Values / Mission -->
-                <div class="glass border border-white/10 rounded-3xl p-10">
-                    <h3 class="text-2xl font-bold mb-8 flex text-center gap-3">
-                        <span class="text-sky-400">→</span> 
-                        Real Data for Real Training
-                    </h3>
-                    
-                    <div class="space-y-8">
-                        <div class="flex gap-5">
-                            <div class="text-4xl">🎯</div>
-                            <div>
-                                <h4 class="font-semibold text-xl mb-2">Accuracy First</h4>
-                                <p class="text-gray-400">Every projection and conversion is grounded in real elite performances — not guesswork.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-5">
-                            <div class="text-4xl">🚀</div>
-                            <div>
-                                <h4 class="font-semibold text-xl mb-2">Made for Real Training</h4>
-                                <p class="text-gray-400">Designed by swimmers who understand what actually matters at the pool.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-5">
-                            <div class="text-4xl">🤝</div>
-                            <div>
-                                <h4 class="font-semibold text-xl mb-2">For Swimmers &amp; Coaches</h4>
-                                <p class="text-gray-400">Whether you're chasing a personal best or guiding a team, <b>SwimMetrics</b> is built to help you succeed.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
