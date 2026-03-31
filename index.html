@@ -46,7 +46,6 @@
     </style>
 </head>
 <body class="bg-[#0f172a] text-white font-sans">
-
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
@@ -149,29 +148,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal -->
-        <!-- <div id="tool-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-6">
-            <div class="bg-[#0f172a] border border-white/20 rounded-3xl max-w-3xl w-full overflow-hidden">
-                <div class="flex justify-between items-center p-6 border-b border-white/10">
-                    <h3 id="modal-title" class="text-2xl font-bold"></h3>
-                    <button onclick="closeModal()" 
-                            class="text-gray-400 hover:text-white text-3xl leading-none">×</button>
-                </div>
-                <div class="p-8 text-center">
-                    <img id="modal-image" 
-                        src="" 
-                        alt="Tool Preview" 
-                        class="mx-auto w-auto max-h-[600px] rounded-2xl shadow-2xl">
-                </div>
-                <div class="p-6 border-t border-white/10 text-center">
-                    <button onclick="closeModal()" 
-                            class="px-8 py-3 bg-white/10 hover:bg-white/20 rounded-2xl transition">
-                        Close
-                    </button>
-                </div>
-            </div>
-        </div> -->
 
         <!-- Redesigned 2-Column Modal -->
         <div id="tool-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-4">
@@ -390,9 +366,6 @@
         </div>
     </section>
 
-    <!-- Data & Testimonials remain the same as previous version -->
-    <!-- (I kept them to maintain length and flow) -->
-
     <!-- FAQ Section -->
     <section id="faq" class="py-24 bg-[#0a1321]">
         <div class="max-w-4xl mx-auto px-6">
@@ -402,74 +375,140 @@
             </div>
 
             <div class="space-y-4">
-                <!-- FAQ Item 1 -->
+                <!-- FAQ 1 -->
                 <div class="glass border border-white/10 rounded-3xl p-6">
-                    <button onclick="toggleFAQ(this)" 
-                            class="w-full text-left flex justify-between items-center font-medium text-lg">
-                        What data does SwimMetrics use?
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        What does SwimMetrics actually do?
                         <span class="text-2xl transition-transform faq-chevron">↓</span>
                     </button>
                     <div class="faq-answer hidden mt-4 text-gray-300">
-                        SwimMetrics uses real race data from the Olympics, World Championships, NCAA Championships, and the International Swimming League to power accurate split predictions and conversions.
+                        SwimMetrics provides three unique core tools:<br><br>
+                        • A Split Calculator that generates projected final times and split patterns from a goal time entered based on real world race-ratio data.<br>
+                        • A Converter that transforms swim times between SCY, SCM, and LCM using gender event-specific multipliers.<br>
+                        • A Stopwatch that records laps in real time and can convert times in the moment or project finish times depending on the mode.
                     </div>
                 </div>
 
-                <!-- FAQ Item 2 -->
+                <!-- FAQ 2 -->
                 <div class="glass border border-white/10 rounded-3xl p-6">
-                    <button onclick="toggleFAQ(this)" 
-                            class="w-full text-left flex justify-between items-center font-medium text-lg">
-                        Is SwimMetrics free to use?
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        How accurate are the predictions and pace projections?
                         <span class="text-2xl transition-transform faq-chevron">↓</span>
                     </button>
                     <div class="faq-answer hidden mt-4 text-gray-300">
-                        Yes, SwimMetrics offers a free tier with core features. Premium plans unlock advanced analysis, unlimited conversions, and priority support.
+                        Predictions use highly detailed ratio tables derived from elite competition data (the Olympics, World Championships, and NCAA Championships). While the projections are mathematically consistent and based on real patterns, they are still estimates — an athlete’s real split distribution may differ due to pacing strategy, fatigue, stroke efficiency, or race conditions.
                     </div>
                 </div>
 
-                <!-- FAQ Item 3 -->
+                <!-- FAQ 3 -->
                 <div class="glass border border-white/10 rounded-3xl p-6">
-                    <button onclick="toggleFAQ(this)" 
-                            class="w-full text-left flex justify-between items-center font-medium text-lg">
-                        Can I convert times between SCY, SCM, and LCM?
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        Is SwimMetrics suitable for coaches, swimmers, or parents?
                         <span class="text-2xl transition-transform faq-chevron">↓</span>
                     </button>
                     <div class="faq-answer hidden mt-4 text-gray-300">
-                        Absolutely. Our Course Converter uses real performance-based multipliers for highly accurate conversions between Short Course Yards, Short Course Meters, and Long Course Meters.
+                        Yes — all three.<br><br>
+                        • Coaches can create pace charts, race plans, set clear goals for athletes, and so much more!<br>
+                        • Swimmers can learn how to execute races smarter by utilizing the Split Calculator and communicating with their coach on how to meet their goals.<br>
+                        • Parents can quickly follow along with races using the Stopwatch predictor during races.<br><br>
+                        <em>Parents please consult your Swimmer’s Coach before utilizing, implementing, and suggesting race strategies with your Swimmer.</em>
                     </div>
                 </div>
 
-                <!-- FAQ Item 4 -->
+                <!-- FAQ 4 -->
                 <div class="glass border border-white/10 rounded-3xl p-6">
-                    <button onclick="toggleFAQ(this)" 
-                            class="w-full text-left flex justify-between items-center font-medium text-lg">
-                        How accurate are the split predictions?
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        Can I export my splits or projections?
                         <span class="text-2xl transition-transform faq-chevron">↓</span>
                     </button>
                     <div class="faq-answer hidden mt-4 text-gray-300">
-                        Our predictions are built from elite-level data and have been validated against real race results. Many coaches and athletes report significant improvements in pacing after using SwimMetrics.
+                        Yes. All SwimMetrics tools include Export to PDF functionality. Exports use clean formatting with column balancing so events print neatly. You’ll receive both an HTML file and a fully formatted PDF.<br><br>
+                        Use them as pace charts for clear goals to be reached! BB cut, Age Group State Championships, Summer Juniors finalists, Olympic Trials qualifier, World Record, or whatever goal you are trying to reach, this is the tool for you!
                     </div>
                 </div>
 
-                <!-- FAQ Item 5 -->
+                <!-- FAQ 5 -->
                 <div class="glass border border-white/10 rounded-3xl p-6">
-                    <button onclick="toggleFAQ(this)" 
-                            class="w-full text-left flex justify-between items-center font-medium text-lg">
-                        Who is behind SwimMetrics?
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        How does the Real-Time Stopwatch integrate with prediction or conversion?
                         <span class="text-2xl transition-transform faq-chevron">↓</span>
                     </button>
                     <div class="faq-answer hidden mt-4 text-gray-300">
-                        SwimMetrics is built with the goal of bringing professional-level swim analysis tools to all swimmers and coaches.
+                        The Stopwatch mode has 3 features:<br><br>
+                        1. Stopwatch mode → Regular stopwatch. Start, stop, split, and clear that track splits and overall time.<br>
+                        2. Predictor mode → Each time you press Split, SwimMetrics estimates the final time using your current pace and ratio patterns.<br>
+                        3. Converter mode → Each Split shows the live time in the starting course AND the converted time for the target course. No more guessing pace if warming up Short Course Yards and then racing Long Course Meters.
                     </div>
                 </div>
+
+                <!-- FAQ 6 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        What is the difference between “From Start” and “From Push” in Predictor mode?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        “From Start” assumes a standard race start (reaction + dive).<br>
+                        “From Push” assumes the swimmer begins in the water (like mid-set in training).<br><br>
+                        The app adjusts the opening split to account for the faster first split when pushing off instead of diving.
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        Why are split options different across courses and distances?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        Each pool type has its own natural increments:<br>
+                        • SCY/SCM → frequently split in 25s<br>
+                        • LCM → splits are naturally in 50s<br><br>
+                        Longer events follow 50-meter increments, while shorter races (50/100) have special handling to match real splitting conventions and predictions.
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        How are times converted between courses?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        The Converter uses either:<br>
+                        • Direct ratio-based conversions for distances with known elite baseline times<br>
+                        • Fallback universal conversion factors for simple course-to-course changes<br><br>
+                        Each conversion is consistent, reproducible, and grounded in stroke-specific and gender-specific reference times.
+                    </div>
+                </div>
+
+                <!-- FAQ 9 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        Why do some distances map to different distances when converting between courses?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        Some events don’t exist in every course type. For example:<br>
+                        • 500 SCY → converts to 400 SCM/LCM<br>
+                        • 1000 SCY → converts to 800 SCM/LCM<br>
+                        • 1650 SCY → converts to 1500 SCM/LCM<br><br>
+                        This is intentional and uses baseline elite reference times to calculate accurate conversion factors.
+                    </div>
+                </div>
+
+                <!-- FAQ 10 -->
+                <div class="glass border border-white/10 rounded-3xl p-6">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left flex justify-between items-center font-medium text-lg">
+                        Why are some strokes or distances unavailable for certain ratios?
+                        <span class="text-2xl transition-transform faq-chevron">↓</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-gray-300">
+                        If a stroke-distance-course combination doesn’t exist in major competitions (i.e. 100 IM LCM) or lacks standardized ratios, SwimMetrics uses safe fallback logic or disables unsupported combinations to avoid misleading projections.
+                    </div>
+                </div>
+
             </div>
-
-            <!-- <div class="text-center mt-12">
-                <p class="text-gray-400">Still have questions?</p>
-                <a href="mailto:contact@swimmetricsapp.com" 
-                class="inline-block mt-4 text-sky-400 hover:text-sky-300 font-medium">
-                    Contact us at contact@swimmetricsapp.com
-                </a>
-            </div> -->
         </div>
     </section>
 
@@ -544,39 +583,6 @@
     </footer>
 
     <script>
-        // function showModal(tool) {
-        //     const modal = document.getElementById('tool-modal');
-        //     const title = document.getElementById('modal-title');
-        //     const image = document.getElementById('modal-image');
-
-        //     if (tool === 'split-calculator') {
-        //         title.textContent = 'Split Calculator';
-        //         image.src = 'images/splitcalculator.gif';
-        //     } 
-        //     else if (tool === 'course-converter') {
-        //         title.textContent = 'Course Converter';
-        //         image.src = 'images/converter.gif';
-        //     } 
-        //     else if (tool === 'stopwatch') {
-        //         title.textContent = 'Stopwatch';
-        //         image.src = 'images/stopwatch.gif';
-        //     }
-
-        //     modal.classList.remove('hidden');
-        //     modal.classList.add('flex');
-        // }
-
-        // function closeModal() {
-        //     const modal = document.getElementById('tool-modal');
-        //     modal.classList.add('hidden');
-        //     modal.classList.remove('flex');
-        // }
-
-        // // Close modal when clicking outside
-        // document.getElementById('tool-modal').addEventListener('click', function(e) {
-        //     if (e.target === this) closeModal();
-        // });
-    
     function showModal(tool) {
         const modal = document.getElementById('tool-modal');
         const title = document.getElementById('modal-title');
