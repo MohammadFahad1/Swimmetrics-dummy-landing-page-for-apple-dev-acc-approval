@@ -97,7 +97,7 @@
 
             <div class="relative flex justify-center">
                 <div class="relative w-full max-w-md">
-                    <div class="absolute -inset-12 bg-gradient-to-br from-sky-400 to-blue-600 rounded-[4rem] blur-3xl opacity-30"></div>
+                    <div class="absolute bg-gradient-to-br from-sky-400 to-blue-600 rounded-[4rem] blur-3xl opacity-30"></div>
                     <div class="glass border border-white/20 rounded-3xl p-4 shadow-2xl">
                         <img src="images/stopwatch_converter.gif" 
                              alt="SwimMetrics App" 
@@ -149,32 +149,42 @@
             </div>
         </div>
 
-        <!-- Redesigned 2-Column Modal -->
-        <div id="tool-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-4">
-            <div class="bg-[#0f172a] border border-white/20 rounded-3xl max-w-5xl w-full overflow-hidden">
+        <!-- Redesigned 2-Column Modal (Mobile Friendly) -->
+        <div id="tool-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-4 overflow-y-auto">
+            <div class="bg-[#0f172a] border border-white/20 rounded-3xl w-full max-w-5xl max-h-[95vh] overflow-hidden flex flex-col">
+                
                 <!-- Header -->
-                <div class="flex justify-between items-center p-6 border-b border-white/10">
-                    <h3 id="modal-title" class="text-2xl font-bold"></h3>
-                    <button onclick="closeModal()" class="text-3xl text-gray-400 hover:text-white">×</button>
+                <div class="flex justify-between items-center p-5 border-b border-white/10 bg-[#0f172a]">
+                    <h3 id="modal-title" class="text-xl md:text-2xl font-bold pr-4"></h3>
+                    <button onclick="closeModal()" 
+                            class="w-10 h-10 flex items-center justify-center text-3xl text-gray-400 hover:text-white transition-colors">
+                        ×
+                    </button>
                 </div>
                 
-                <!-- 2-Column Content -->
-                <div class="grid lg:grid-cols-2 gap-8 p-8">
-                    <!-- Left: Detailed Explanation -->
-                    <div id="modal-description" class="space-y-6 text-gray-300">
-                        <!-- Content will be filled by JavaScript -->
-                    </div>
+                <!-- Content -->
+                <div class="flex-1 overflow-auto p-6 md:p-8">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        
+                        <!-- Left: Text -->
+                        <div id="modal-description" class="space-y-6 text-gray-300 text-[17px] leading-relaxed">
+                            <!-- Filled by JavaScript -->
+                        </div>
 
-                    <!-- Right: Video / Screenshot -->
-                    <div class="bg-black rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center min-h-[400px]">
-                        <img id="modal-image" src="" alt="Tool Preview" class="max-h-[500px] rounded-xl">
+                        <!-- Right: Image/Video -->
+                        <div class="bg-black rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center min-h-[320px] lg:min-h-[460px]">
+                            <img id="modal-image" 
+                                src="" 
+                                alt="Tool Preview" 
+                                class="w-full h-auto max-h-[520px] object-contain">
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Footer -->
-                <div class="p-6 border-t border-white/10 text-center">
+                <div class="p-5 border-t border-white/10 text-center bg-[#0f172a]">
                     <button onclick="closeModal()" 
-                            class="px-10 py-3 bg-white/10 hover:bg-white/20 rounded-2xl transition">
+                            class="w-full sm:w-auto px-10 py-3 bg-white/10 hover:bg-white/20 rounded-2xl transition text-base">
                         Close
                     </button>
                 </div>
@@ -302,7 +312,7 @@
                     <ul class="space-y-4 text-gray-300">
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
-                            Get more confidence in your race plan-nowing what “race pace” feels like before you step up to the blocks.
+                            Get more confidence in your race plan-knowing what “race pace” feels like before you step up to the blocks.
                         </li>
                         <li class="flex gap-3">
                             <span class="text-emerald-400 mt-1">•</span>
@@ -512,75 +522,66 @@
         </div>
     </section>
 
-    <!-- Download Section -->
-    <section class="py-24 bg-[#0f172a] border-t border-white/10">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                Ready to train smarter?
-            </h2>
-            <p class="text-gray-400 text-xl mb-12">
-                Download SwimMetrics now and start using elite-level data today.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <!-- App Store Button -->
-                <a href="https://apps.apple.com" 
-                target="_blank"
-                class="transition-transform hover:scale-105">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
-                        alt="Download on the App Store" 
-                        class="h-14">
-                </a>
-
-                <!-- Google Play Button -->
-                <a href="https://play.google.com" 
-                target="_blank"
-                class="transition-transform hover:scale-105">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                        alt="Get it on Google Play" 
-                        class="h-14">
+<!-- Consolidated Bottom Section -->
+<section class="py-20 bg-[#0f172a] border-t border-white/10">
+    <div class="max-w-5xl mx-auto px-6">
+        
+        <!-- Main Content -->
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            
+            <!-- Left: Contact Us -->
+            <div class="text-center md:text-left">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to swim smarter?</h2>
+                <p class="text-gray-400 text-lg mb-8">Join coaches and athletes using elite data to improve performance.</p>
+                
+                <a href="mailto:contact@swimmetricsapp.com" 
+                   class="inline-flex items-center gap-4 bg-white text-black font-semibold text-xl px-10 py-5 rounded-3xl hover:scale-105 transition">
+                    Contact Us
+                    <i class="fas fa-envelope"></i>
                 </a>
             </div>
 
-            <p class="text-sm text-gray-500 mt-10">
-                Available on iOS and Android
+            <!-- Right: Download Buttons -->
+            <div class="text-center">
+                <p class="text-gray-400 text-xl mb-8">Download SwimMetrics now</p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="https://apps.apple.com" target="_blank" class="transition-transform hover:scale-105">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                             alt="Download on the App Store" class="h-14">
+                    </a>
+                    
+                    <a href="https://play.google.com" target="_blank" class="transition-transform hover:scale-105">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                             alt="Get it on Google Play" class="h-14">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Text + Thanks + Instagram -->
+        <div class="mt-20 pt-10 border-t border-white/10 text-center">
+            <p class="text-sm text-gray-500 mb-6">
+                © 2026 <strong>SwimMetrics</strong> • Built for coaches and swimmers who want real results.
             </p>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section id="contact" class="py-28 bg-gradient-to-br from-sky-900 to-blue-950">
-        <div class="max-w-4xl mx-auto text-center px-6">
-            <h2 class="text-5xl font-bold mb-6">Ready to swim smarter?</h2>
-            <p class="text-xl text-gray-300 mb-10">Join coaches and athletes using elite data to improve performance.</p>
             
-            <a href="mailto:contact@swimmetricsapp.com" 
-               class="inline-flex items-center gap-4 bg-white text-black font-semibold text-xl px-12 py-6 rounded-3xl hover:scale-105 transition">
-                Contact us
-                <i class="fas fa-envelope"></i>
-            </a>
-            
-            <!-- <p class="mt-8 text-sm text-gray-400">• Email: contact@swimmetricsapp.com</p> -->
-        </div>
-    </section>
+            <p class="text-gray-400 mb-2">Many thanks to my family and friends.</p>
+            <p class="text-gray-400">Special thanks to my friends and mentors <strong>DCS, JCU, and ECR</strong>.</p>
 
-    <footer class="py-12 border-t border-white/10 text-center text-gray-500 text-sm">
-        © 2026 <b>SwimMetrics</b> • Built for coaches and swimmers who want real results.
-        <br/><br/>
-        <p>Many thanks to my family and friends.</p>
-        <p>Special thanks to my friends and mentors <strong>DCS, JCU, and ECR</strong>.</p>
-
-        <!-- Social Icons -->
-        <div class="flex justify-center gap-6 mt-10 hover:text-sky-400">
-            <a href="https://www.instagram.com/swimmetricsapp?igsh=MWxiazZ2a2t4bzVxYQ%3D%3D&utm_source=qr" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="w-auto h-11 px-3 flex items-center justify-center gap-2 rounded-2xl bg-white/10 hover:bg-white/20 transition-all text-2xl">
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-            </a>
+            <!-- Instagram -->
+            <div class="flex justify-center mt-10">
+                <a href="https://www.instagram.com/swimmetricsapp?igsh=MWxiazZ2a2t4bzVxYQ%3D%3D&utm_source=qr" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="flex items-center gap-3 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-2xl transition-all text-lg">
+                    <i class="fab fa-instagram text-2xl"></i>
+                    <span>Follow us on Instagram</span>
+                </a>
+            </div>
         </div>
-    </footer>
+
+    </div>
+</section>
 
     <script>
     function showModal(tool) {
@@ -629,7 +630,7 @@
                     <li>• Export your timing sheet instantly</li>
                 </ul>
             `;
-            image.src = 'images/stopwatch.gif';
+            image.src = 'images/stopwatch_predictor1.gif';
         }
 
         modal.classList.remove('hidden');
