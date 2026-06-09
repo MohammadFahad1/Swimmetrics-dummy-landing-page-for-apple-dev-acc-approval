@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwimMetrics — Train Smarter. Race Faster.</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.png" />
+    <meta name="description" content="Elite swim split analysis, accurate course conversions, and performance projections powered by real data from Olympics, World Championships, and NCAA.">
+    <meta name="theme-color" content="#0ea5e9">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            content: [],
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        primary: '#0ea5e9',
+                        navy: '#0f172a',
+                        ocean: '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+        font-family: 'Inter', system-ui, sans-serif;
+        }
+        .hero-bg {
+        background: linear-gradient(135deg, #0A2540 0%, #1E3A8A 100%);
+        }
+        .navy {
+        color: #0A2540;
+        }
+        .accent {
+        color: #22D3EE;
+        }
+        .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); }
+        .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); }
+        .float { animation: float 7s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
+        
+        .app-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .app-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(14 165 233 / 0.25);
+        }
+        .hero-height {
+            min-height: calc(100vh-100px)
+        }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-white font-sans">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="h-10 rounded-2xl flex items-center justify-center text-3xl">
+                    <a href="index.html"><image src="images/logo1.png" class="h-12" alt="SwimMetrics Logo"/></a>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="index.html#home" class="hover:text-sky-400 transition">Home</a>
+                <a href="#features" class="hover:text-sky-400 transition">Features</a>
+                <a href="#gallery" class="hover:text-sky-400 transition">App Gallery</a>
+                <a href="#faq" class="hover:text-sky-400 transition">FAQ</a>
+                <a href="#about" class="hover:text-sky-400 transition">About</a>
+            </div>
+            <a href="#contact" 
+               class="bg-sky-500 hover:bg-sky-600 px-6 py-3 rounded-2xl font-medium transition">
+                Contact Us
+            </a>
+        </div>
+    </nav>
+
+  <!-- Hero -->
+  <header class="hero-bg text-white py-16 mt-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold mb-4">Privacy Policy</h1>
+      <p class="text-xl text-blue-200">Last updated: <span id="last-updated">June 09, 2026</span></p>
+    </div>
+  </header>
+
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <div id="privacy-content" class="prose prose-lg max-w-none">
+      <!-- Content will be loaded here via JavaScript -->
+      <div class="text-center py-12">
+        <i class="fas fa-spinner fa-spin text-4xl text-blue-600"></i>
+        <p class="mt-4 text-gray-500">Loading Privacy Policy...</p>
+      </div>
+    </div>
+
+    <hr>
+    <!-- Consolidated Bottom Section -->
+    <section class="py-20 bg-[#0f172a] border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-6">
+            
+            <!-- Main Content -->
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                
+                <!-- Left: Contact Us -->
+                <div class="text-center md:text-left">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to swim smarter?</h2>
+                    <p class="text-gray-400 text-lg mb-8">Join coaches and athletes using elite data to improve performance.</p>
+                    
+                    <a href="mailto:contact@swimmetricsapp.com" 
+                    class="inline-flex items-center gap-4 bg-white text-black font-semibold text-xl px-10 py-5 rounded-3xl hover:scale-105 transition">
+                        Contact Us
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+
+                <!-- Right: Download Buttons -->
+                <div class="text-center">
+                    <p class="text-gray-400 text-xl mb-8">Download SwimMetrics now</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a href="https://apps.apple.com" target="_blank" class="transition-transform hover:scale-105">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                                alt="Download on the App Store" class="h-14">
+                        </a>
+                        
+                        <a href="https://play.google.com" target="_blank" class="transition-transform hover:scale-105">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                                alt="Get it on Google Play" class="h-14">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Text + Thanks + Instagram -->
+            <div class="mt-20 pt-10 border-t border-white/10 text-center">
+                <p class="text-sm text-gray-500 mb-6">
+                    © 2026 <strong>SwimMetrics</strong> • Built for coaches and swimmers who want real results.
+                </p>
+                
+                <p class="text-gray-400 mb-2">Many thanks to my family and friends.</p>
+                <p class="text-gray-400">Special thanks to my friends and mentors <strong>DCS, JCU, and ECR</strong>.</p>
+
+                <!-- Instagram -->
+                <div class="flex justify-center mt-10">
+                    <a href="https://www.instagram.com/swimmetricsapp?igsh=MWxiazZ2a2t4bzVxYQ%3D%3D&utm_source=qr" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-3 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-2xl transition-all text-lg">
+                        <i class="fab fa-instagram text-2xl"></i>
+                        <span>Follow us on Instagram</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+  <script>
+    // Fetch Privacy Policy from API
+    async function loadPrivacyPolicy() {
+      try {
+        const response = await fetch('http://api.swimmetricsapp.com/auth/privacy-policy/');
+        const data = await response.json();
+
+        const contentDiv = document.getElementById('privacy-content');
+        const lastUpdated = document.getElementById('last-updated');
+
+        // Update last updated date
+        if (data.updated_at) {
+          const date = new Date(data.updated_at);
+          lastUpdated.textContent = date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          });
+        }
+
+        // Render the content
+        contentDiv.innerHTML = `
+          <div class="bg-white shadow-sm rounded-2xl p-10">
+            ${data.content || '<p class="text-red-600">No content available at the moment.</p>'}
+          </div>
+        `;
+      } catch (error) {
+        console.error('Error fetching privacy policy:', error);
+        document.getElementById('privacy-content').innerHTML = `
+          <div class="bg-red-50 border border-red-200 rounded-2xl p-10 text-center">
+            <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-4"></i>
+            <h3 class="text-xl font-semibold text-red-700">Unable to load Privacy Policy</h3>
+            <p class="text-red-600 mt-3">Please try again later or contact support.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Load the policy on page load
+    window.onload = loadPrivacyPolicy;
+  </script>
+</body>
+</html>
