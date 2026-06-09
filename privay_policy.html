@@ -162,7 +162,7 @@
     // Fetch Privacy Policy from API
     async function loadPrivacyPolicy() {
       try {
-        const response = await fetch('http://api.swimmetricsapp.com/auth/privacy-policy/');
+        const response = await fetch('https://api.swimmetricsapp.com/auth/privacy-policy/');
         const data = await response.json();
 
         const contentDiv = document.getElementById('privacy-content');
