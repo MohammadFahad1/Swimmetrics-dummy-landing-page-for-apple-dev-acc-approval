@@ -199,6 +199,25 @@
                         </div>
                     </div>
 
+                          <!-- Auto-renew / Profile Info -->
+                          <div class="mb-4 text-sm text-gray-700">
+                            <div class="flex items-center justify-between mb-2">
+                              <div>
+                                <strong>Auto-renew:</strong>
+                                <span id="current-auto-renew-status">--</span>
+                              </div>
+                              <div>
+                                <strong>Locked price:</strong>
+                                <span id="plan-locked-price">--</span>
+                              </div>
+                            </div>
+
+                            <label class="flex items-center gap-3">
+                              <input id="auto-renew-checkbox" type="checkbox" class="h-4 w-4" />
+                              <span class="text-sm text-gray-600">Enable auto-renew (save payment method for off-session billing)</span>
+                            </label>
+                          </div>
+
                     <!-- Wallet Notice -->
                     <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-5">
 
@@ -348,7 +367,9 @@
 {% comment %} pk_test_51TA4ZlQfEaUSM5pArTWl7OmwYFAHjld8nfVYZ3tY3mXW8uIKblWOpoETUQ3YprsTDbh15avXUKASljG5mNOSVrOL00yuckvSim {% endcomment %}
 <script>
     const API_URL =
-        "https://api.swimmetricsapp.com/plan/payment/create-checkout-session/";
+      "https://api.swimmetricsapp.com/plan/payment/create-checkout-session/";
+    const PROFILE_URL =
+      "https://api.swimmetricsapp.com/plan/profile/";
 
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -378,22 +399,22 @@
 
     let stripe;
     let elements;
+    let paymentElement;
 
-    async function initializePayment() {
+    async function initializePayment(autoRenew = false) {
 
         try {
 
-            const response = await fetch(API_URL, {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({ auto_renew: !!autoRenew }),
+        });
 
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            });
-
-            const data = await response.json();
+        const data = await response.json();
 
             if (!response.ok) {
                 throw new Error(
@@ -403,23 +424,33 @@
                 );
             }
 
-            document.getElementById("price").innerText =
-                `$${data.amount}`;
 
+            document.getElementById("price").innerText =
+              `$${data.amount}`;
+
+            // Recreate Stripe client if publishable key changed
             stripe = Stripe(data.publishable_key);
 
+            // If we already had a payment element, unmount before creating a new one
+            try {
+              if (paymentElement && typeof paymentElement.unmount === 'function') {
+                paymentElement.unmount();
+              }
+            } catch (err) {
+              console.warn('Failed to unmount previous payment element', err);
+            }
+
             elements = stripe.elements({
-                clientSecret: data.client_secret,
-                appearance: {
-                    theme: "stripe",
-                    variables: {
-                        borderRadius: "12px",
-                    }
-                }
+              clientSecret: data.client_secret,
+              appearance: {
+                theme: "stripe",
+                variables: {
+                  borderRadius: "12px",
+                },
+              },
             });
 
-            const paymentElement =
-                elements.create("payment");
+            paymentElement = elements.create("payment");
 
             paymentElement.mount("#payment-element");
 
@@ -439,6 +470,58 @@
         }
     }
 
+        async function fetchProfileAndInit() {
+          try {
+            // Show loading
+            loadingSection.classList.remove('hidden');
+            errorSection.classList.add('hidden');
+
+            const res = await fetch(PROFILE_URL, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+              },
+            });
+
+            const profile = await res.json();
+
+            if (!res.ok) {
+              throw new Error(profile.detail || profile.error || 'Unable to fetch profile.');
+            }
+
+            // Update UI with profile values
+            document.getElementById('current-auto-renew-status').innerText =
+              profile.auto_renew ? 'Enabled' : 'Disabled';
+
+            document.getElementById('plan-locked-price').innerText =
+              profile.plan_locked_price ? `$${profile.plan_locked_price}` : '--';
+
+            const checkbox = document.getElementById('auto-renew-checkbox');
+            checkbox.checked = !!profile.auto_renew;
+
+            // Reinitialize payment using the profile's auto_renew value
+            await initializePayment(!!profile.auto_renew);
+
+            // When user toggles auto-renew, recreate checkout session
+            checkbox.addEventListener('change', async (e) => {
+              const enabled = e.target.checked;
+              // update status text immediately
+              document.getElementById('current-auto-renew-status').innerText = enabled ? 'Enabled' : 'Disabled';
+              // show loader while reinitializing
+              loadingSection.classList.remove('hidden');
+              paymentSection.classList.add('hidden');
+              await initializePayment(enabled);
+            });
+
+          } catch (err) {
+            console.error(err);
+            loadingSection.classList.add('hidden');
+            errorSection.classList.remove('hidden');
+            errorMessage.innerText = err.message || 'Profile load failed.';
+          }
+        }
+
     document
     .getElementById("payment-form")
     .addEventListener("submit", async (e) => {
@@ -454,12 +537,12 @@
         try {
 
             const result = await stripe.confirmPayment({
-                elements,
-                confirmParams: {
-                    return_url:
-                        "https://swimmetricsapp.com/payment-success.html"
-                },
-                redirect: "if_required"
+              elements,
+              confirmParams: {
+                return_url:
+                  "https://swimmetricsapp.com/payment-success.html",
+              },
+              redirect: "if_required",
             });
 
             if (result.error) {
@@ -482,7 +565,8 @@
         }
     });
 
-    initializePayment();
+    // Load profile and initialize payment session using user's auto-renew setting
+    fetchProfileAndInit();
 </script>
   </body>
 </html>
