@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwimMetrics — Train Smarter. Race Faster.</title>
+    <title>SwimMetrics - Train Smarter. Race Faster.</title>
     <link rel="icon" type="image/svg+xml" href="images/favicon.png" />
     <meta name="description" content="Elite swim split analysis, accurate course conversions, and performance projections powered by real data from Olympics, World Championships, and NCAA.">
     <meta name="theme-color" content="#0ea5e9">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 
@@ -16,7 +18,7 @@
             content: [],
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    fontFamily: { sans: ['Merriweather', 'serif'] },
                     colors: {
                         primary: '#0ea5e9',
                         navy: '#0f172a',
@@ -99,7 +101,7 @@
                 <div class="relative w-full max-w-md">
                     <div class="absolute bg-gradient-to-br from-sky-400 to-blue-600 rounded-[4rem] blur-3xl opacity-30"></div>
                     <div class="glass border border-white/20 rounded-3xl p-4 shadow-2xl">
-                        <img src="images/gifs/stopwatch.gif" 
+                        <img src="images/gifs/stopwatch-predictor.gif" 
                              alt="SwimMetrics App" 
                              class="rounded-2xl w-full max-h-[700px]">
                     </div>
@@ -203,7 +205,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- App Image 1 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/stopwatch_predictor.gif" 
+                    <img src="images/gifs/stopwatch-predictor.gif" 
                          alt="Split Calculator" 
                          class="w-full h-auto">
                     <div class="p-6">
@@ -236,7 +238,7 @@
 
                 <!-- App Image 5 -->
                 <div class="app-card glass border border-white/10 rounded-3xl overflow-hidden">
-                    <img src="images/gifs/stopwatch.gif" 
+                    <img src="images/gifs/stopwatch_converter.gif" 
                          alt="Course Converter" 
                          class="w-full h-auto">
                     <div class="p-6">
@@ -630,7 +632,7 @@
                     <li>• Export your timing sheet instantly</li>
                 </ul>
             `;
-            image.src = 'images/gifs/stopwatch-clicked.gif';
+            image.src = 'images/gifs/stopwatch-predictor.gif';
         }
 
         modal.classList.remove('hidden');
