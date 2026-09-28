@@ -225,8 +225,18 @@
                             </label>
                           </div>
 
+                    <!-- Express Checkout (Apple Pay / Google Pay / Link) -->
+                    <div id="express-checkout-wrapper" class="mb-4 hidden">
+                        <div id="express-checkout-element"></div>
+                        <div class="flex items-center my-4">
+                            <div class="flex-grow border-t border-gray-200"></div>
+                            <span class="px-3 text-xs text-gray-400 font-semibold uppercase tracking-wider">Or pay with card</span>
+                            <div class="flex-grow border-t border-gray-200"></div>
+                        </div>
+                    </div>
+
                     <!-- Wallet Notice -->
-                    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-5">
+                    <div id="wallet-notice" class="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-5">
 
                         <div class="flex items-start gap-3">
 
@@ -241,8 +251,7 @@
                                 </p>
 
                                 <p class="text-sm text-blue-700 mt-1">
-                                    Apple Pay and Google Pay will appear automatically
-                                    if supported on your device.
+                                    Apple Pay and Google Pay express buttons will appear automatically above if supported on your device.
                                 </p>
                             </div>
                         </div>
@@ -407,6 +416,7 @@
     let stripe;
     let elements;
     let paymentElement;
+    let expressCheckoutElement;
 
     async function initializePayment(autoRenew = false) {
 
@@ -438,7 +448,15 @@
             // Recreate Stripe client if publishable key changed
             stripe = Stripe(data.publishable_key);
 
-            // If we already had a payment element, unmount before creating a new one
+            // Unmount existing elements if present
+            try {
+              if (expressCheckoutElement && typeof expressCheckoutElement.unmount === 'function') {
+                expressCheckoutElement.unmount();
+              }
+            } catch (err) {
+              console.warn('Failed to unmount previous express checkout element', err);
+            }
+
             try {
               if (paymentElement && typeof paymentElement.unmount === 'function') {
                 paymentElement.unmount();
@@ -455,6 +473,47 @@
                   borderRadius: "12px",
                 },
               },
+            });
+
+            // Create Express Checkout Element for 1-click Apple Pay & Google Pay buttons
+            expressCheckoutElement = elements.create("expressCheckout", {
+              buttonHeight: 48,
+            });
+
+            expressCheckoutElement.mount("#express-checkout-element");
+
+            expressCheckoutElement.on("ready", (event) => {
+              const wrapper = document.getElementById("express-checkout-wrapper");
+              const notice = document.getElementById("wallet-notice");
+              if (event.availablePaymentMethods) {
+                const methods = event.availablePaymentMethods;
+                const hasAvailable = Object.values(methods).some((val) => val === true);
+                if (hasAvailable) {
+                  wrapper.classList.remove("hidden");
+                  notice.classList.add("hidden");
+                }
+              }
+            });
+
+            expressCheckoutElement.on("confirm", async (event) => {
+              try {
+                const result = await stripe.confirmPayment({
+                  elements,
+                  confirmParams: {
+                    return_url: "https://swimmetricsapp.com/payment-success.html",
+                  },
+                  redirect: "if_required",
+                });
+
+                if (result.error) {
+                  alert(result.error.message);
+                } else {
+                  window.location.href = "https://swimmetricsapp.com/payment-success.html";
+                }
+              } catch (err) {
+                console.error(err);
+                alert("Payment processing failed. Please try again.");
+              }
             });
 
             paymentElement = elements.create("payment");
